@@ -1,6 +1,8 @@
 /* dependencias*/
 const express = require('express')
 
+const taskRouter = require('./tasks/tasks.router')
+
 /* iniciando configuracion*/
 const port = 9000
 const app = express()
@@ -8,9 +10,6 @@ const app = express()
 /* Habilitacion o recibiendo Json*/
 app.use(express.json())
 
-const todoDB = []
-
-let id = 1
 
 app.get('/', (req, res) => {
     res.json({
@@ -18,7 +17,20 @@ app.get('/', (req, res) => {
     })
 })
 
-/* */
+app.use('/', taskRouter)
+
+
+app.listen(port, () => {
+    console.log(`Server started at port ${port}`)
+})
+
+
+/* 
+
+const todoDB = []
+
+let id = 1
+
 app.get('/todo', (req, res) => {
 res.status(200).json(todoDB)
 })
@@ -51,9 +63,4 @@ app.get('/todo/:id', (req, res) => {
     } else {
         res.status(404).json({message: 'Invalid ID'})
     }
-})
-
-
-app.listen(port, () => {
-    console.log(`Server started at port ${port}`)
-})
+}) */
