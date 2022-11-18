@@ -23,7 +23,7 @@ const createTodo = (data) => {
         is_completed: false
     }
     todoDB.push(newTodo)
-
+    
     return newTodo
 
 }
