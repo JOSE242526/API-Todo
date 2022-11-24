@@ -1,19 +1,27 @@
 /* dependencias*/
-const express = require('express')
+const express = require('express');
 
-const taskRouter = require('./tasks/tasks.router')
+const db = require('./utils/database')
+const taskRouter = require('./tasks/tasks.router');
+const app = express();
 
-/* iniciando configuracion*/
 const port = 9000
-const app = express()
 
 /* Habilitacion o recibiendo Json*/
 app.use(express.json())
 
 
+db.authenticate()
+    .then(() => console.log('Database Sincronizada correctamente'))
+    .catch((err) => console.log(err))
+
+db.sync()
+    .then(() => console.log('Database Sincronizada correctamente'))
+    .catch((err) => console.log(err))
+
 app.get('/', (req, res) => {
     res.json({
-    messeger: 'ok'
+    messeger: 'probando'
     })
 })
 

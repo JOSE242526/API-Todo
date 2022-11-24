@@ -1,22 +1,12 @@
-const { sequileze } = require('sequelize')
+const { Sequelize } = require('sequelize')
 
 const db = new Sequelize({
-    dialet : 'postgres',
+    dialect: 'postgres',
     host: 'localhost',
-    database: 'todo-DB',
+    database: 'todo-db',
     username: 'postgres',
     password: '123456',
     port: 5432
 })
-
-
-db.authenticate()
-    .then(() => console.log('Database Sincronizada correctamente'))
-    .cath((err) => console.log(err))
-
-
-db.sync()
-    .then(() => console.log('Database Sincronizada correctamente'))
-    .cath((err) => console.log(err))
 
 module.exports = db
