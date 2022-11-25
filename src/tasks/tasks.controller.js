@@ -18,21 +18,22 @@ const findAllTodos = async() => {
     return data
 }
 
-const findTodoById = (id) => {
+const findTodoById = async (id) => {
     //? Esta funcion debe de retornar un todo dependiendo el id
-    const todo = todoDB.find(item => item.id == id)
+    // const todo = await Tasks.findByPk(id)
+    const todo = await Tasks.findOne({
+        where: {
+            id : id
+        },
+    })
     return todo
 }
 
-const createTodo = (obj) => {
-    //? Esta funcion debe de crear un nuevo todo en mi base de datos y retornar el todo creado
-    const newTodo = {
-        id: id++,
+const createTodo = async (obj) => {
+    const newTodo = await Tasks.create({
         title: obj.title,
-        description: obj.description,
-        is_completed: false
-    }
-    todoDB.push(newTodo)
+        description: obj.description
+    })
     return newTodo
 }
 

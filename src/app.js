@@ -3,10 +3,10 @@ const express = require('express');
 
 const db = require('./utils/database')
 const taskRouter = require('./tasks/tasks.router');
+
+
 const app = express();
-
 const port = 9000
-
 /* Habilitacion o recibiendo Json*/
 app.use(express.json())
 
@@ -26,6 +26,11 @@ app.get('/', (req, res) => {
 })
 
 app.use('/', taskRouter)
+
+
+
+
+
 
 
 app.listen(port, () => {
