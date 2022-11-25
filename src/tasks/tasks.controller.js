@@ -37,8 +37,20 @@ const createTodo = async (obj) => {
     return newTodo
 }
 
+
+const updateTodo = async (id, obj) => {
+    const data = await Tasks.update(obj, {
+        where: {
+            id : id
+        }
+    })
+    return data
+}
+
+
 module.exports = {
     findAllTodos,
     findTodoById, 
-    createTodo
+    createTodo,
+    updateTodo
 }
